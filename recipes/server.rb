@@ -65,7 +65,7 @@ if node[:redis][:master_server_role]
   master_server, master_port = master_node['fqdn'], master_node['redis']['server']['port']
 end
 
-service "redis_server" do
+service "redis-server" do
   supports :status => true
   action :nothing
 end
@@ -76,6 +76,6 @@ template "#{node[:redis][:conf_dir]}/redis.conf" do
   group         "root"
   mode          "0644"
   variables     :redis => node[:redis], :redis_server => node[:redis][:server], :master_server => master_server, :master_port => master_port
-  notifies      :restart, "service[redis_server]"
+  notifies      :restart, "service[redis-server]"
 end
 

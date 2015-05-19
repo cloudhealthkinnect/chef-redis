@@ -19,7 +19,6 @@
 # limitations under the License.
 #
 
-include_recipe 'runit'
 include_recipe 'sysctl'
 
 case node[:redis][:installation_preference]
@@ -64,6 +63,10 @@ if node[:redis][:master_server_role]
   master_nodes = search(:node, "(role:#{node[:redis][:master_server_role]} AND chef_environment:#{node.chef_environment})")
   master_node = master_nodes.first unless master_nodes.empty?
   master_server, master_port = master_node['fqdn'], master_node['redis']['server']['port']
+end
+
+service "redis_server" do
+  action :nothing
 end
 
 template "#{node[:redis][:conf_dir]}/redis.conf" do

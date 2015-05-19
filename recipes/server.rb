@@ -66,6 +66,7 @@ if node[:redis][:master_server_role]
 end
 
 service "redis_server" do
+  supports :status => true
   action :nothing
 end
 

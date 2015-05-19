@@ -1,3 +1,4 @@
+name             "redis"
 maintainer       "Scott M. Likens"
 maintainer_email "scott@likens.us"
 license          "Apache 2.0"

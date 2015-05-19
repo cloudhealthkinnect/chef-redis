@@ -75,6 +75,3 @@ template "#{node[:redis][:conf_dir]}/redis.conf" do
   notifies      :restart, "service[redis_server]"
 end
 
-runit_service "redis_server" do
-  options node[:redis]
-end

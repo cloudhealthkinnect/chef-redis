@@ -34,6 +34,7 @@ end
 
 group node[:redis][:group] do
   gid node[:redis][:gid]
+  ignore_failure true
 end
 
 user node[:redis][:user] do
@@ -44,6 +45,7 @@ user node[:redis][:user] do
   home node[:redis][:data_dir]
   supports :manage_home => false
   action :create
+  ignore_failure true
 end
 
 %w(data_dir log_dir conf_dir).each do |p|
